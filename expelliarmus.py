@@ -36,7 +36,7 @@ def getHashes(path):
     return (md5, sha1)
 
 parser = argparse.ArgumentParser(description="This script compares every pair of files in a given directory against each other to get a ratio of similarity to help give an idea of whether they were cheating or not")
-parser.add_argument('-d', '--dir', help='Directory that is the root directory for each of the files')
+parser.add_argument('-d', '--dir', help='Directory that is the root directory for each of the files', required=True)
 parser.add_argument('-t', '--threshold', help='This is the user defined threshold. Any ratios >= this threshold are printed', default=90)
 args = parser.parse_args()
 
