@@ -4,7 +4,11 @@
 The purpose of this script is to scan pairs of files in a directory to check for a ratio of similarity and any two files that meet the threshold (user defined) will then be printed out as warrenting a look from the human. It also hashes the files and any two files that share a same md5  and sha1 hash will be printed out as matching, they will also likely be printed out for the ratio of similarity.
 
 ## Installation
-Installing this is simple.  Just get the python libraries needed  
+Installing this is simple.  Get the packages needed (For OS)  
+Centos: `sudo yum install python-pip antiword`  
+Ubuntu: `sudo apt-get install python-pip antiword`  
+Mac: `brew install antiword python-pip`  
+Then just  pip install the python libraries
 `pip install fuzzywuzzy hashlib  docx2txt`
 **Note**: if argparse isn't installed by default include it too  
 Next just clone this repository and have fun.  
