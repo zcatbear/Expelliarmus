@@ -9,6 +9,12 @@ from os.path import isfile, join
 import hashlib
 import argparse
 from collections import defaultdict
+
+#RTF Parsing
+from pyth.plugins.rtf15.reader import Rtf15Reader
+from pyth.plugins.plaintext.writer import PlaintextWriter
+
+#PDF Parsing
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -52,7 +58,10 @@ def documentToText(path):
         return(removeNonAscii(text))
     elif path[-4:] == ".pdf":
         return removeNonAscii(convert_pdf_to_txt(path))
-    return ""
+    elif path[-4:] == ".rtf":
+        text = Rtf15Reader.read(open(path))
+        return removeNonAscii(PlaintextWriter.write(text).getvalue())
+    return "Returned Nothing."
 def getHashes(path):
     with open(path,  'rb') as afile:
         md5 = hashlib.md5(afile.read()).hexdigest()
