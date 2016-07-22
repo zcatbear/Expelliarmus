@@ -27,7 +27,10 @@ If for some reason `./` doesn't work you can either use `python expelliarmus.py 
 
 
 ### Complexity (for those concerned)
-This always runs 2n times (where n is the number of files in the directory) because it is similar to a complete graph in graph theory where every node is equally connected to all other nodes. 
+Sadly this isn't efficient in the slightest. This has the same complexity as a K complete graph. This is due to each pair of files being run together is similar to an edge. 
+Therefore the complexity is O(n^2). In exact terms it is going to be n(n-1)/2. 
 
+##### Optimization
+To optimize it (may be coming), maybe append the hash matches to a list. This will cut out [n/2, (n-1)/2, ... , (n-(n+1)/2)] runs because they won't be an edge. 
 ## Use
 
